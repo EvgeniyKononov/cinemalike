@@ -1,9 +1,6 @@
 package ru.astondevs.cinemalike.genre.servlet.mapper.impl;
 
-import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.servlet.dto.OutFilmDto;
-import ru.astondevs.cinemalike.film.servlet.mapper.FilmDtoMapper;
-import ru.astondevs.cinemalike.film.servlet.mapper.impl.FilmDtoMapperImpl;
 import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.genre.service.GenreService;
 import ru.astondevs.cinemalike.genre.service.impl.GenreServiceImpl;

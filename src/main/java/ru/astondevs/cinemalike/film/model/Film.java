@@ -8,8 +8,8 @@ import java.util.Set;
 public class Film {
     private Long id;
     private String name;
-    private Set<User> userLikes;
     private Long genreId;
+    private Set<User> userLikes;
 
     public Film() {
     }

@@ -9,53 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0202857d-a007-4afa-9bd0-64af6fc4ccc1" name="Changes" comment="created User entity and architecture classes for it">
-      <change afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/constant/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/ConnectionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/impl/ConnectionManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/exception/DuplicateException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/exception/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/FilmRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/FilmResultSetMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/FilmService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/dto/InFilmDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/dto/OutFilmDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/FilmDtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/model/Genre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/mapper/GenreResultSetMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/mapper/impl/GenreResultSetMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/GenreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/GenreServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/dto/InGenreDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/dto/OutGenreDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/mapper/GenreDtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/mapper/impl/GenreDtoMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/mapper/UserResultSetMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/mapper/impl/UserResulSetMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/UserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/dto/InUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/dto/OutUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/mapper/UserDtoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/mapper/impl/UserDtoMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0202857d-a007-4afa-9bd0-64af6fc4ccc1" name="Changes" comment="created Genre and Film">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/repository/LikeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/repository/impl/LikeRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/service/LikeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/servlet/LikeServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/constant/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/constant/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/impl/ConnectionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/impl/ConnectionManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/dto/OutFilmDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/dto/OutFilmDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/GenreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/GenreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/GenreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/GenreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/mapper/impl/GenreDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/mapper/impl/GenreDtoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +241,8 @@
       <workItem from="1699339208507" duration="23336000" />
       <workItem from="1699429639047" duration="20798000" />
       <workItem from="1699533566215" duration="2744000" />
-      <workItem from="1699599637740" duration="24337000" />
+      <workItem from="1699599637740" duration="26202000" />
+      <workItem from="1699688881750" duration="13139000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1699201051008</created>
@@ -273,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699201051008</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="created Genre and Film">
+      <created>1699631363484</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699631363484</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +290,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="created User entity and architecture classes for it" />
-    <option name="LAST_COMMIT_MESSAGE" value="created User entity and architecture classes for it" />
+    <MESSAGE value="created Genre and Film" />
+    <option name="LAST_COMMIT_MESSAGE" value="created Genre and Film" />
   </component>
 </project>

@@ -7,8 +7,6 @@ import ru.astondevs.cinemalike.film.servlet.mapper.FilmDtoMapper;
 import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.genre.service.GenreService;
 import ru.astondevs.cinemalike.genre.service.impl.GenreServiceImpl;
-import ru.astondevs.cinemalike.genre.servlet.mapper.GenreDtoMapper;
-import ru.astondevs.cinemalike.genre.servlet.mapper.impl.GenreDtoMapperImpl;
 import ru.astondevs.cinemalike.user.model.User;
 import ru.astondevs.cinemalike.user.servlet.dto.OutUserDto;
 import ru.astondevs.cinemalike.user.servlet.mapper.UserDtoMapper;
@@ -45,7 +43,7 @@ public class FilmDtoMapperImpl implements FilmDtoMapper {
         for(Film film : films) {
             outFilmsDto.add(map(film, genreService.findById(film.getGenre())));
         }
-        return null;
+        return outFilmsDto;
     }
 
 }

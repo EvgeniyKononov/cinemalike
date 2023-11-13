@@ -46,7 +46,7 @@ public class FilmServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         InFilmDto inFilmDto = objectMapper.readValue(req.getInputStream(), InFilmDto.class);
-        Genre genre = genreService.findByName(inFilmDto.getName());
+        Genre genre = genreService.findByName(inFilmDto.getGenreDto().getName());
         Film film = dtoMapper.toNewEntity(inFilmDto, genre);
         film = filmService.save(film);
         OutFilmDto outFilmDto = dtoMapper.map(film, genre);
@@ -59,7 +59,7 @@ public class FilmServlet extends HttpServlet {
         Long id = Long.valueOf(req.getParameter("id"));
         Film film = filmService.findById(id);
         InFilmDto inFilmDto = objectMapper.readValue(req.getInputStream(), InFilmDto.class);
-        Genre genre = genreService.findById(film.getGenre());
+        Genre genre = genreService.findByName(inFilmDto.getGenreDto().getName());
         Film updatedFilm = dtoMapper.toNewEntity(inFilmDto, genre);
         film = filmService.update(film, updatedFilm);
         OutFilmDto outFilmDto = dtoMapper.map(film, genre);

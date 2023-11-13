@@ -43,9 +43,7 @@ public class GenreServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long id = Long.valueOf(req.getParameter("id"));
         Genre genre = genreService.findById(id);
-        Set<Film> films = filmService.findByGenreId(genre.getId());
-        Set<OutFilmDto> outFilmsDto = filmDtoMapper.toOutDto(films);
-        OutGenreDto genreDto = dtoMapper.map(genre, outFilmsDto);
+        OutGenreDto genreDto = dtoMapper.map(genre, getOutFilmsDtoByGenreId(genre.getId()));
         String json = objectMapper.writeValueAsString(genreDto);
         resp.getWriter().write(json);
     }
@@ -55,9 +53,7 @@ public class GenreServlet extends HttpServlet {
         InGenreDto genreDto = objectMapper.readValue(req.getInputStream(), InGenreDto.class);
         Genre genre = dtoMapper.toNewEntity(genreDto);
         genre = genreService.save(genre);
-        Set<Film> films = filmService.findByGenreId(genre.getId());
-        Set<OutFilmDto> outFilmsDto = filmDtoMapper.toOutDto(films);
-        OutGenreDto outGenreDto = dtoMapper.map(genre, outFilmsDto);
+        OutGenreDto outGenreDto = dtoMapper.map(genre, getOutFilmsDtoByGenreId(genre.getId()));
         String json = objectMapper.writeValueAsString(outGenreDto);
         resp.getWriter().write(json);
     }
@@ -69,9 +65,7 @@ public class GenreServlet extends HttpServlet {
         InGenreDto genreDto = objectMapper.readValue(req.getInputStream(), InGenreDto.class);
         Genre updatedGenre = dtoMapper.toNewEntity(genreDto);
         genre = genreService.update(genre, updatedGenre);
-        Set<Film> films = filmService.findByGenreId(genre.getId());
-        Set<OutFilmDto> outFilmsDto = filmDtoMapper.toOutDto(films);
-        OutGenreDto outGenreDto = dtoMapper.map(genre, outFilmsDto);
+        OutGenreDto outGenreDto = dtoMapper.map(genre, getOutFilmsDtoByGenreId(genre.getId()));
         String json = objectMapper.writeValueAsString(outGenreDto);
         resp.getWriter().write(json);
     }
@@ -79,7 +73,15 @@ public class GenreServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
         Long id = Long.valueOf(req.getParameter("id"));
-        genreService.deleteById(id);
-        resp.setStatus(202);
+        if (genreService.deleteById(id)) {
+            resp.setStatus(202);
+        } else {
+            resp.setStatus(400);
+        }
+    }
+
+    private Set<OutFilmDto> getOutFilmsDtoByGenreId(Long genreId) {
+        Set<Film> films = filmService.findByGenreId(genreId);
+        return filmDtoMapper.toOutDto(films);
     }
 }

@@ -17,7 +17,7 @@ import java.sql.Statement;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import static ru.astondevs.cinemalike.constant.Constant.IOEXCEPTION;
+import static ru.astondevs.cinemalike.constant.Constant.SQL_EXCEPTION;
 
 public class GenreRepositoryImpl implements GenreRepository {
     private static final Logger log = Logger.getLogger(GenreRepositoryImpl.class.getName());
@@ -48,21 +48,21 @@ public class GenreRepositoryImpl implements GenreRepository {
         String query = "INSERT INTO genres (name) " +
                 "VALUES ('" + genre.getName() + "')";
 
-        executeQuery(query);
+        connectionManager.executeQuery(query);
         return findByName(genre.getName());
     }
 
     @Override
     public Genre update(Genre genre) {
         String query = "UPDATE genres SET name = '" + genre.getName() + "' WHERE id = " + genre.getId();
-        executeQuery(query);
+        connectionManager.executeQuery(query);
         return findById(genre.getId());
     }
 
     @Override
-    public void delete(Long id) {
+    public boolean delete(Long id) {
         String query = "DELETE FROM genres WHERE id = " + id;
-        executeQuery(query);
+        return connectionManager.executeQuery(query);
     }
 
     private Genre getGenre(String query) {
@@ -72,20 +72,10 @@ public class GenreRepositoryImpl implements GenreRepository {
              ResultSet resultSet = statement.executeQuery(query)) {
             genre = resultSetMapper.map(resultSet);
         } catch (SQLException exception) {
-            log.severe(IOEXCEPTION + exception.getMessage());
+            log.severe(SQL_EXCEPTION + exception.getMessage());
         }
         Set<Film> films = filmRepository.getFilmsByGenreId(genre.getId());
         genre.setFilms(films);
         return genre;
     }
-
-    private void executeQuery(String query) {
-        try (Connection connection = connectionManager.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.execute(query);
-        } catch (SQLException exception) {
-            log.severe(IOEXCEPTION + exception.getMessage());
-        }
-    }
-
 }

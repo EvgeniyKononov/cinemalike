@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class OutFilmDto {
     private String name;
-    private Set<OutUserDto> userLikes;
     private String genre;
+    private Set<OutUserDto> userLikes;
 
     public OutFilmDto() {
     }
@@ -35,11 +35,11 @@ public class OutFilmDto {
         this.userLikes = userLikes;
     }
 
-    public String getGenreDto() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenreDto(String genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 

@@ -6,9 +6,6 @@ import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.repository.FilmRepository;
 import ru.astondevs.cinemalike.film.repository.impl.FilmRepositoryImpl;
 import ru.astondevs.cinemalike.film.service.FilmService;
-import ru.astondevs.cinemalike.genre.repository.GenreRepository;
-import ru.astondevs.cinemalike.genre.service.GenreService;
-import ru.astondevs.cinemalike.genre.service.impl.GenreServiceImpl;
 
 import java.util.Objects;
 import java.util.Set;
@@ -16,11 +13,9 @@ import java.util.Set;
 public class FilmServiceImpl implements FilmService {
 
     private final FilmRepository filmRepository;
-    private final GenreService genreService;
 
     public FilmServiceImpl() {
         filmRepository = new FilmRepositoryImpl();
-        genreService = new GenreServiceImpl();
     }
 
     @Override

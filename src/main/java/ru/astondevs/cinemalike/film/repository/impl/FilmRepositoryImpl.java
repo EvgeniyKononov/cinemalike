@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import static ru.astondevs.cinemalike.constant.Constant.IOEXCEPTION;
+import static ru.astondevs.cinemalike.constant.Constant.SQL_EXCEPTION;
 
 public class FilmRepositoryImpl implements FilmRepository {
 
@@ -76,7 +76,7 @@ public class FilmRepositoryImpl implements FilmRepository {
              ResultSet resultSet = statement.executeQuery(query)) {
             film = resultSetMapper.map(resultSet);
         } catch (SQLException exception) {
-            log.severe(IOEXCEPTION + exception.getMessage());
+            log.severe(SQL_EXCEPTION + exception.getMessage());
         }
 
         return film;
@@ -89,7 +89,7 @@ public class FilmRepositoryImpl implements FilmRepository {
              ResultSet resultSet = statement.executeQuery(query)) {
             films = resultSetMapper.toEntity(resultSet);
         } catch (SQLException exception) {
-            log.severe(IOEXCEPTION + exception.getMessage());
+            log.severe(SQL_EXCEPTION + exception.getMessage());
         }
         return films;
     }
@@ -99,7 +99,7 @@ public class FilmRepositoryImpl implements FilmRepository {
              Statement statement = connection.createStatement()) {
             statement.execute(query);
         } catch (SQLException exception) {
-            log.severe(IOEXCEPTION + exception.getMessage());
+            log.severe(SQL_EXCEPTION + exception.getMessage());
         }
     }
 }
