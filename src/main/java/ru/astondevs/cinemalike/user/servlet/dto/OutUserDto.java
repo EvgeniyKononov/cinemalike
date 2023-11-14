@@ -1,19 +1,17 @@
 package ru.astondevs.cinemalike.user.servlet.dto;
 
-import ru.astondevs.cinemalike.film.model.Film;
-
 import java.util.Objects;
 import java.util.Set;
 
 public class OutUserDto {
     private Long id;
     private String name;
-    private Set<Film> filmLikes;
+    private Set<String> filmLikes;
 
     public OutUserDto() {
     }
 
-    public OutUserDto(Long id, String name, Set<Film> filmLikes) {
+    public OutUserDto(Long id, String name, Set<String> filmLikes) {
         this.id = id;
         this.name = name;
         this.filmLikes = filmLikes;
@@ -35,11 +33,11 @@ public class OutUserDto {
         this.name = name;
     }
 
-    public Set<Film> getFilmLikes() {
+    public Set<String> getFilmLikes() {
         return filmLikes;
     }
 
-    public void setFilmLikes(Set<Film> filmLikes) {
+    public void setFilmLikes(Set<String> filmLikes) {
         this.filmLikes = filmLikes;
     }
 

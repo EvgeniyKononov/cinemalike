@@ -22,15 +22,13 @@ import java.io.IOException;
 public class FilmServlet extends HttpServlet {
     private transient FilmService filmService;
     private transient GenreService genreService;
-    private transient FilmDtoMapper dtoMapper;
-    private ObjectMapper objectMapper;
+    private final transient FilmDtoMapper dtoMapper = new FilmDtoMapperImpl();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public void init() {
         filmService = new FilmServiceImpl();
         genreService = new GenreServiceImpl();
-        dtoMapper = new FilmDtoMapperImpl();
-        objectMapper = new ObjectMapper();
     }
 
     @Override

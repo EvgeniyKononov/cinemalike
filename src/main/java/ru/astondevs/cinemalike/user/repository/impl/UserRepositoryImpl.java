@@ -24,13 +24,15 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findById(Long id) {
-        String query = "SELECT * FROM users WHERE id = " + id;
+        String query = "SELECT * FROM users AS u LEFT JOIN film_likes AS fl ON u.id = fl.user_id " +
+                "LEFT JOIN films AS f ON fl.film_id = f.id WHERE u.id = " + id;
         return getUser(query);
     }
 
     @Override
     public User findByLogin(String login) {
-        String query = "SELECT * FROM users WHERE login = '" + login + "'";
+        String query = "SELECT * FROM users AS u LEFT JOIN film_likes AS fl ON u.id = fl.user_id " +
+                "LEFT JOIN films AS f ON fl.film_id = f.id WHERE u.login = '" + login + "'";
         return getUser(query);
     }
 

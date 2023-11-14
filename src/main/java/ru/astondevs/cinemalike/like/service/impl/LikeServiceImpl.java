@@ -14,9 +14,9 @@ import ru.astondevs.cinemalike.user.repository.impl.UserRepositoryImpl;
 import java.util.Objects;
 
 public class LikeServiceImpl implements LikeService {
-    private final LikeRepository likeRepository;
-    private final UserRepository userRepository;
-    private final FilmRepository filmRepository;
+    private LikeRepository likeRepository;
+    private UserRepository userRepository;
+    private FilmRepository filmRepository;
 
     public LikeServiceImpl() {
         likeRepository = new LikeRepositoryImpl();

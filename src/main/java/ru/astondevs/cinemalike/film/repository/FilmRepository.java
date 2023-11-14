@@ -17,4 +17,5 @@ public interface FilmRepository {
 
     Set<Film> getFilmsByGenreId(Long id);
 
+    Set<Film> getLikedFilmsByUserId(Long id);
 }

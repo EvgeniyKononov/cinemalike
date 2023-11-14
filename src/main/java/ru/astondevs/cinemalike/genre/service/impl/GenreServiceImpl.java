@@ -10,7 +10,7 @@ import ru.astondevs.cinemalike.genre.service.GenreService;
 import java.util.Objects;
 
 public class GenreServiceImpl implements GenreService {
-    private final GenreRepository genreRepository;
+    private GenreRepository genreRepository;
 
     public GenreServiceImpl() {
         genreRepository = new GenreRepositoryImpl();

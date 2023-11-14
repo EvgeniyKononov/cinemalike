@@ -18,14 +18,12 @@ import java.io.IOException;
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
     private transient UserService userService;
-    private transient UserDtoMapper dtoMapper;
-    private ObjectMapper objectMapper;
+    private final transient UserDtoMapper dtoMapper = new UserDtoMapperImpl();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public void init() {
         userService = new UserServiceImpl();
-        dtoMapper = new UserDtoMapperImpl();
-        objectMapper = new ObjectMapper();
     }
 
     @Override

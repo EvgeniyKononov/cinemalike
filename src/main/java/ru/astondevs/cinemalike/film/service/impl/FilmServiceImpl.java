@@ -6,13 +6,14 @@ import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.repository.FilmRepository;
 import ru.astondevs.cinemalike.film.repository.impl.FilmRepositoryImpl;
 import ru.astondevs.cinemalike.film.service.FilmService;
+import ru.astondevs.cinemalike.user.model.User;
 
 import java.util.Objects;
 import java.util.Set;
 
 public class FilmServiceImpl implements FilmService {
 
-    private final FilmRepository filmRepository;
+    private FilmRepository filmRepository;
 
     public FilmServiceImpl() {
         filmRepository = new FilmRepositoryImpl();
@@ -23,6 +24,9 @@ public class FilmServiceImpl implements FilmService {
         Film film = filmRepository.findById(id);
         if (Objects.isNull(film.getId())) {
             throw new NotFoundException("Film with such id not found");
+        }
+        for (User user: film.getUserLikes()){
+            user.setFilmLikes(getLikedFilmsByUserId(user.getId()));
         }
         return film;
     }
@@ -50,5 +54,9 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public Set<Film> findByGenreId(Long genreId) {
         return filmRepository.getFilmsByGenreId(genreId);
+    }
+
+    private Set<Film> getLikedFilmsByUserId(Long id) {
+        return filmRepository.getLikedFilmsByUserId(id);
     }
 }

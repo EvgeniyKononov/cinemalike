@@ -10,7 +10,7 @@ import ru.astondevs.cinemalike.user.service.UserService;
 import java.util.Objects;
 
 public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
     public UserServiceImpl() {
         userRepository = new UserRepositoryImpl();
@@ -43,5 +43,4 @@ public class UserServiceImpl implements UserService {
     public void deleteById(Long id) {
         userRepository.delete(id);
     }
-
 }

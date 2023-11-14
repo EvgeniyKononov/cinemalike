@@ -26,17 +26,14 @@ import java.util.Set;
 public class GenreServlet extends HttpServlet {
     private transient GenreService genreService;
     private transient FilmService filmService;
-    private transient GenreDtoMapper dtoMapper;
-    private transient FilmDtoMapper filmDtoMapper;
-    private ObjectMapper objectMapper;
+    private final transient GenreDtoMapper dtoMapper = new GenreDtoMapperImpl();
+    private final transient FilmDtoMapper filmDtoMapper = new FilmDtoMapperImpl();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public void init() {
         genreService = new GenreServiceImpl();
         filmService = new FilmServiceImpl();
-        dtoMapper = new GenreDtoMapperImpl();
-        objectMapper = new ObjectMapper();
-        filmDtoMapper = new FilmDtoMapperImpl();
     }
 
     @Override

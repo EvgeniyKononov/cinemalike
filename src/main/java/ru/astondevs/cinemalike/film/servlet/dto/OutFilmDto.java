@@ -56,4 +56,13 @@ public class OutFilmDto {
     public int hashCode() {
         return Objects.hash(name, userLikes, genre);
     }
+
+    @Override
+    public String toString() {
+        return "OutFilmDto{" +
+                "name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                ", userLikes=" + userLikes +
+                '}';
+    }
 }

@@ -9,30 +9,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0202857d-a007-4afa-9bd0-64af6fc4ccc1" name="Changes" comment="created Genre and Film">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/repository/LikeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/repository/impl/LikeRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/service/LikeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/servlet/LikeServlet.java" afterDir="false" />
+    <list default="true" id="0202857d-a007-4afa-9bd0-64af6fc4ccc1" name="Changes" comment="realized setting and deleting likes">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/servlet/FilmServletTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/genre/servlet/GenreServletTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/like/servlet/LikeServletTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/user/service/impl/UserServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/user/servlet/UserServletTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/constant/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/constant/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/impl/ConnectionManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/db/impl/ConnectionManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/FilmRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/FilmRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/dto/OutFilmDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/dto/OutFilmDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/GenreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/GenreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/model/Genre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/GenreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/GenreServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/mapper/impl/GenreDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/servlet/mapper/impl/GenreDtoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/servlet/LikeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/like/servlet/LikeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/mapper/impl/UserResulSetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/mapper/impl/UserResulSetMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/dto/OutUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/dto/OutUserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/mapper/impl/UserDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/servlet/mapper/impl/UserDtoMapperImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +50,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -65,6 +72,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2XlQ30U8CbuDdgV2So4tldgk2Eq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -79,6 +89,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/tolst/IdeaProjects/cinemalike/target&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -87,7 +99,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2091954&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Docker&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -102,8 +114,95 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tolst\IdeaProjects\cinemalike\src\main\java\ru\astondevs\cinemalike\film\" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.astondevs.cinemalike.like.service.impl" />
+      <recent name="ru.astondevs.cinemalike.film.service.impl" />
+      <recent name="ru.astondevs.cinemalike.genre.service.impl" />
+      <recent name="ru.astondevs.cinemalike.user.service.impl" />
+      <recent name="ru.astondevs.cinemalike.like.servlet" />
+    </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10">
+  <component name="RunManager" selected="JUnit.ru.astondevs.cinemalike in cinemalike">
+    <configuration name="LikeServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinemalike" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.astondevs.cinemalike.like.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.astondevs.cinemalike.like.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="ru.astondevs.cinemalike.like.service.impl.LikeServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LikeServiceImplTest.deleteLike_whenDeletingLike_thenReturnTrueIfSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinemalike" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.astondevs.cinemalike.like.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.astondevs.cinemalike.like.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="ru.astondevs.cinemalike.like.service.impl.LikeServiceImplTest" />
+      <option name="METHOD_NAME" value="deleteLike_whenDeletingLike_thenReturnTrueIfSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LikeServiceImplTest.setLike_whenFilmNotFound_thenThrowNotFoundException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinemalike" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.astondevs.cinemalike.like.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.astondevs.cinemalike.like.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="ru.astondevs.cinemalike.like.service.impl.LikeServiceImplTest" />
+      <option name="METHOD_NAME" value="setLike_whenFilmNotFound_thenThrowNotFoundException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LikeServiceImplTest.setLike_whenUserNotFound_thenThrowNotFoundException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinemalike" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.astondevs.cinemalike.like.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.astondevs.cinemalike.like.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="ru.astondevs.cinemalike.like.service.impl.LikeServiceImplTest" />
+      <option name="METHOD_NAME" value="setLike_whenUserNotFound_thenThrowNotFoundException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ru.astondevs.cinemalike in cinemalike" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cinemalike" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.astondevs.cinemalike.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.astondevs.cinemalike" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 10" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$PROJECT_DIR$/../../../../Program Files/Java/jdk-19" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/cinemalike/user?id=2" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -192,38 +291,21 @@
         </option>
       </method>
     </configuration>
-    <configuration name="TomcatConfig" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
-      <deployment type="docker-image">
-        <settings>
-          <option name="imageTag" value="tomcat:latest" />
-          <option name="containerName" value="TomcatContainer" />
-          <option name="portBindings">
-            <list>
-              <DockerPortBindingImpl>
-                <option name="containerPort" value="8080" />
-                <option name="hostIp" value="127.0.0.1" />
-                <option name="hostPort" value="8080" />
-              </DockerPortBindingImpl>
-            </list>
-          </option>
-          <option name="volumeBindings">
-            <list>
-              <DockerVolumeBindingImpl>
-                <option name="hostPath" value="C:\Users\tolst\IdeaProjects\cinemalike\out\artifacts\cl_war" />
-              </DockerVolumeBindingImpl>
-            </list>
-          </option>
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Docker.TomcatConfig" />
+      <item itemvalue="JUnit.LikeServiceImplTest" />
+      <item itemvalue="JUnit.LikeServiceImplTest.deleteLike_whenDeletingLike_thenReturnTrueIfSuccess" />
+      <item itemvalue="JUnit.LikeServiceImplTest.setLike_whenFilmNotFound_thenThrowNotFoundException" />
+      <item itemvalue="JUnit.LikeServiceImplTest.setLike_whenUserNotFound_thenThrowNotFoundException" />
+      <item itemvalue="JUnit.ru.astondevs.cinemalike in cinemalike" />
       <item itemvalue="Tomcat Server.Tomcat 10" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.TomcatConfig" />
+        <item itemvalue="JUnit.ru.astondevs.cinemalike in cinemalike" />
+        <item itemvalue="JUnit.LikeServiceImplTest" />
+        <item itemvalue="JUnit.LikeServiceImplTest.setLike_whenUserNotFound_thenThrowNotFoundException" />
+        <item itemvalue="JUnit.LikeServiceImplTest.deleteLike_whenDeletingLike_thenReturnTrueIfSuccess" />
+        <item itemvalue="JUnit.LikeServiceImplTest.setLike_whenFilmNotFound_thenThrowNotFoundException" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +324,8 @@
       <workItem from="1699429639047" duration="20798000" />
       <workItem from="1699533566215" duration="2744000" />
       <workItem from="1699599637740" duration="26202000" />
-      <workItem from="1699688881750" duration="13139000" />
+      <workItem from="1699688881750" duration="39009000" />
+      <workItem from="1699946206587" duration="20638000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1699201051008</created>
@@ -258,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699631363484</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="realized setting and deleting likes">
+      <created>1699864185757</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699864185757</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +381,40 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="created User entity and architecture classes for it" />
     <MESSAGE value="created Genre and Film" />
-    <option name="LAST_COMMIT_MESSAGE" value="created Genre and Film" />
+    <MESSAGE value="realized setting and deleting likes" />
+    <option name="LAST_COMMIT_MESSAGE" value="realized setting and deleting likes" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cinemalike$ru_astondevs_cinemalike_in_cinemalike.ic" NAME="ru.astondevs.cinemalike in cinemalike Coverage Results" MODIFIED="1699969147599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$UserServletTest_doGet.ic" NAME="UserServletTest.doGet Coverage Results" MODIFIED="1699882660461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.user.servlet.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$All_in_cinemalike.ic" NAME="All in cinemalike Coverage Results" MODIFIED="1699967416317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/cinemalike$UserServletTest.ic" NAME="UserServletTest Coverage Results" MODIFIED="1699948752487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.user.servlet.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$LikeServletTest.ic" NAME="LikeServletTest Coverage Results" MODIFIED="1699954069912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.like.servlet.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$FilmServiceImplTest.ic" NAME="FilmServiceImplTest Coverage Results" MODIFIED="1699967395239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.film.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$LikeServiceImplTest.ic" NAME="LikeServiceImplTest Coverage Results" MODIFIED="1699969123209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.like.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$GenreServiceImplTest.ic" NAME="GenreServiceImplTest Coverage Results" MODIFIED="1699964532743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.genre.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$UserServiceImplTest.ic" NAME="UserServiceImplTest Coverage Results" MODIFIED="1699962675248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.user.service.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$FilmServletTest.ic" NAME="FilmServletTest Coverage Results" MODIFIED="1699953332637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.film.servlet.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/cinemalike$GenreServletTest.ic" NAME="GenreServletTest Coverage Results" MODIFIED="1699950904554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ru.astondevs.cinemalike.genre.servlet.*</FILTER>
+    </SUITE>
   </component>
 </project>

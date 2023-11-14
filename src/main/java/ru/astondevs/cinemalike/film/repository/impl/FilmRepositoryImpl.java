@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import static ru.astondevs.cinemalike.constant.Constant.SELECT_ALL_FILMS_JOINED_LIKES;
 import static ru.astondevs.cinemalike.constant.Constant.SQL_EXCEPTION;
 
 public class FilmRepositoryImpl implements FilmRepository {
@@ -31,13 +32,14 @@ public class FilmRepositoryImpl implements FilmRepository {
 
     @Override
     public Film findById(Long id) {
-        String query = "SELECT * FROM films WHERE id = " + id;
+        String query = SELECT_ALL_FILMS_JOINED_LIKES + "LEFT JOIN users AS u ON fl.user_id = u.id WHERE f.id = " + id;
         return getFilm(query);
     }
 
     @Override
     public Film findByName(String name) {
-        String query = "SELECT * FROM films WHERE name = '" + name + "'";
+        String query = SELECT_ALL_FILMS_JOINED_LIKES + "LEFT JOIN users AS u ON fl.user_id = u.id " +
+                "WHERE f.name = '" + name + "'";
         return getFilm(query);
     }
 
@@ -45,7 +47,7 @@ public class FilmRepositoryImpl implements FilmRepository {
     public Film save(Film film, Long genreId) {
         String query = "INSERT INTO films (name, genre) " +
                 "VALUES ('" + film.getName() + "', '" + genreId + "')";
-        executeQuery(query);
+        connectionManager.executeQuery(query);
         return findByName(film.getName());
     }
 
@@ -53,19 +55,25 @@ public class FilmRepositoryImpl implements FilmRepository {
     public Film update(Film film, Long genreId) {
         String query = "UPDATE films SET name = '" + film.getName() + "', genre = '" + genreId
                 + "' WHERE id = " + film.getId();
-        executeQuery(query);
+        connectionManager.executeQuery(query);
         return findById(film.getId());
     }
 
     @Override
     public void delete(Long id) {
         String query = "DELETE FROM films WHERE id = " + id;
-        executeQuery(query);
+        connectionManager.executeQuery(query);
     }
 
     @Override
     public Set<Film> getFilmsByGenreId(Long id) {
         String query = "SELECT * FROM films WHERE genre = " + id;
+        return getFilms(query);
+    }
+
+    @Override
+    public Set<Film> getLikedFilmsByUserId(Long id) {
+        String query = SELECT_ALL_FILMS_JOINED_LIKES + "WHERE fl.user_id = " + id;
         return getFilms(query);
     }
 
@@ -94,12 +102,4 @@ public class FilmRepositoryImpl implements FilmRepository {
         return films;
     }
 
-    private void executeQuery(String query) {
-        try (Connection connection = connectionManager.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.execute(query);
-        } catch (SQLException exception) {
-            log.severe(SQL_EXCEPTION + exception.getMessage());
-        }
-    }
 }
