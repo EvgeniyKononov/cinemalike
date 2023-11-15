@@ -9,7 +9,10 @@ import java.util.Set;
 
 public interface GenreDtoMapper {
     OutGenreDto map(Genre genre, Set<OutFilmDto> films);
+
     OutGenreDto map(String genreName, Set<OutFilmDto> films);
+
     Genre toNewEntity(InGenreDto dto);
+
     Genre toEntity(InGenreDto dto);
 }

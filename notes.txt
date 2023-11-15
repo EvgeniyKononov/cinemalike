@@ -1,6 +1,0 @@
-загрузка драйвера
-     /*   try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException exception) {
-            log.severe("Got Class Not Found Exception " + exception.getMessage());
-        }*/

@@ -28,7 +28,6 @@ public class LikeServiceImpl implements LikeService {
     public boolean setLike(Long userId, Long filmId) {
         checkUserAndFilmInDb(userId, filmId);
         return likeRepository.setLike(userId, filmId);
-
     }
 
     @Override

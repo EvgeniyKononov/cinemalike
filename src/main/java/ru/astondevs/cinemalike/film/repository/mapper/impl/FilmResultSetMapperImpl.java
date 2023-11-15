@@ -23,7 +23,7 @@ public class FilmResultSetMapperImpl implements FilmResultSetMapper {
             user.setId(resultSet.getLong(6));
             user.setLogin(resultSet.getString(7));
             user.setName(resultSet.getString(8));
-            if(user.getId() != 0) {
+            if (user.getId() != 0) {
                 users.add(user);
             }
         }

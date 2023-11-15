@@ -40,7 +40,7 @@ public class FilmDtoMapperImpl implements FilmDtoMapper {
     @Override
     public Set<OutFilmDto> toOutDto(Set<Film> films) {
         Set<OutFilmDto> outFilmsDto = new HashSet<>();
-        for(Film film : films) {
+        for (Film film : films) {
             outFilmsDto.add(map(film, genreService.findById(film.getGenre())));
         }
         return outFilmsDto;

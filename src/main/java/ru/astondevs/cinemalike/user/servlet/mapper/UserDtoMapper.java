@@ -9,6 +9,7 @@ import java.util.Set;
 public interface UserDtoMapper {
 
     OutUserDto map(User user);
+
     User map(InUserDto inUserDto);
 
     Set<OutUserDto> map(Set<User> users);

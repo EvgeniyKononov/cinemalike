@@ -25,7 +25,7 @@ public class FilmServiceImpl implements FilmService {
         if (Objects.isNull(film.getId())) {
             throw new NotFoundException("Film with such id not found");
         }
-        for (User user: film.getUserLikes()){
+        for (User user : film.getUserLikes()) {
             user.setFilmLikes(getLikedFilmsByUserId(user.getId()));
         }
         return film;

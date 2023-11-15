@@ -14,7 +14,7 @@ public class UserResulSetMapperImpl implements UserResultSetMapper {
     public User map(ResultSet resultSet) throws SQLException {
         User user = new User();
         Set<Film> films = new HashSet<>();
-        while(resultSet.next()){
+        while (resultSet.next()) {
             user.setId(resultSet.getLong(1));
             user.setLogin(resultSet.getString(2));
             user.setName(resultSet.getString(3));
@@ -22,7 +22,7 @@ public class UserResulSetMapperImpl implements UserResultSetMapper {
             film.setId(resultSet.getLong(6));
             film.setName(resultSet.getString(7));
             film.setGenre(resultSet.getLong(8));
-            if(film.getId() != 0) {
+            if (film.getId() != 0) {
                 films.add(film);
             }
         }
