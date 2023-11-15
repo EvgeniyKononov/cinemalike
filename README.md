@@ -6,4 +6,4 @@ Project realizing the backend for creating users, films and marks films which li
 Stack: Java 17, REST based on Servlets, Maven,  Posgres SQL, JDBC
 
 ER-диаграмма:
-![ER-диаграмма](cinemalike.jpg)
+![ER-диаграмма](cinemalike.JPG)
