@@ -61,7 +61,9 @@ public class FilmRepositoryImpl implements FilmRepository {
 
     @Override
     public void delete(Long id) {
-        String query = "DELETE FROM films WHERE id = " + id;
+        String query = "DELETE FROM film_likes WHERE film_id = " + id;
+        connectionManager.executeQuery(query);
+        query = "DELETE FROM films WHERE id = " + id;
         connectionManager.executeQuery(query);
     }
 

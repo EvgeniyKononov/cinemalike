@@ -2,6 +2,7 @@ package ru.astondevs.cinemalike.user.model;
 
 import ru.astondevs.cinemalike.film.model.Film;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,17 +13,20 @@ public class User {
     private Set<Film> filmLikes;
 
     public User() {
+        this.filmLikes = new HashSet<>();
     }
 
     public User(Long id, String login, String name) {
         this.id = id;
         this.login = login;
         this.name = name;
+        this.filmLikes = new HashSet<>();
     }
 
     public User(String login, String name) {
         this.login = login;
         this.name = name;
+        this.filmLikes = new HashSet<>();
     }
 
     public Long getId() {

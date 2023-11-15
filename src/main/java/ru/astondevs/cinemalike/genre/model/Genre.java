@@ -2,6 +2,7 @@ package ru.astondevs.cinemalike.genre.model;
 
 import ru.astondevs.cinemalike.film.model.Film;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ public class Genre {
     public Genre(Long id, String name) {
         this.id = id;
         this.name = name;
+        films = new HashSet<>();
     }
 
     public Long getId() {

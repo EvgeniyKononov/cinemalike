@@ -10,7 +10,7 @@ import ru.astondevs.cinemalike.user.repository.mapper.impl.UserResulSetMapperImp
 import java.sql.*;
 import java.util.logging.Logger;
 
-import static ru.astondevs.cinemalike.constant.Constant.SQL_EXCEPTION;
+import static ru.astondevs.cinemalike.constant.Constant.*;
 
 public class UserRepositoryImpl implements UserRepository {
     private static final Logger log = Logger.getLogger(UserRepositoryImpl.class.getName());
@@ -20,6 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
     public UserRepositoryImpl() {
         connectionManager = new ConnectionManagerImpl();
         resultSetMapper = new UserResulSetMapperImpl();
+
     }
 
     @Override

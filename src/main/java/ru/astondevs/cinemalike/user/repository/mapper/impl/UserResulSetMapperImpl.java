@@ -22,7 +22,9 @@ public class UserResulSetMapperImpl implements UserResultSetMapper {
             film.setId(resultSet.getLong(6));
             film.setName(resultSet.getString(7));
             film.setGenre(resultSet.getLong(8));
-            films.add(film);
+            if(film.getId() != 0) {
+                films.add(film);
+            }
         }
         user.setFilmLikes(films);
         return user;
