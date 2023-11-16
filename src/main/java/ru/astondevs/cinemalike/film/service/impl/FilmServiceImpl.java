@@ -37,13 +37,13 @@ public class FilmServiceImpl implements FilmService {
         if (Objects.nonNull(filmInDb.getId())) {
             throw new DuplicateException("Film with such name already exist");
         }
-        return filmRepository.save(film, film.getGenre());
+        return filmRepository.save(film);
     }
 
     @Override
     public Film update(Film film, Film updatedFilm) {
         return filmRepository.update(new Film(film.getId(), updatedFilm.getName(), film.getUserLikes(),
-                updatedFilm.getGenre()), film.getGenre());
+                updatedFilm.getGenre()));
     }
 
     @Override

@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -32,15 +33,15 @@ public class GenreRepositoryImpl implements GenreRepository {
     }
 
     @Override
-    public Genre findById(Long id) {
+    public Genre findById(Long id, boolean lazy) {
         String query = "SELECT * FROM genres WHERE id = " + id;
-        return getGenre(query);
+        return getGenre(query, lazy);
     }
 
     @Override
     public Genre findByName(String name) {
         String query = "SELECT * FROM genres WHERE name = '" + name + "'";
-        return getGenre(query);
+        return getGenre(query, false);
     }
 
     @Override
@@ -56,16 +57,18 @@ public class GenreRepositoryImpl implements GenreRepository {
     public Genre update(Genre genre) {
         String query = "UPDATE genres SET name = '" + genre.getName() + "' WHERE id = " + genre.getId();
         connectionManager.executeQuery(query);
-        return findById(genre.getId());
+        return findById(genre.getId(), false);
     }
 
     @Override
     public boolean delete(Long id) {
-        String query = "DELETE FROM genres WHERE id = " + id;
+        String query = "UPDATE films SET genre = null WHERE genre = " + id;
+        connectionManager.executeQuery(query);
+        query = "DELETE FROM genres WHERE id = " + id;
         return connectionManager.executeQuery(query);
     }
 
-    private Genre getGenre(String query) {
+    private Genre getGenre(String query, boolean lazy) {
         Genre genre = new Genre();
         try (Connection connection = connectionManager.getConnection();
              Statement statement = connection.createStatement();
@@ -74,8 +77,12 @@ public class GenreRepositoryImpl implements GenreRepository {
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
         }
-        Set<Film> films = filmRepository.getFilmsByGenreId(genre.getId());
-        genre.setFilms(films);
+        if (!lazy) {
+            Set<Film> films = filmRepository.getFilmsByGenreId(genre.getId());
+            genre.setFilms(films);
+        } else {
+            genre.setFilms(new HashSet<>());
+        }
         return genre;
     }
 }

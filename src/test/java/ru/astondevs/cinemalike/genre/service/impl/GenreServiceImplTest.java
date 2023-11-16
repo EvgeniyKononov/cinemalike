@@ -35,7 +35,7 @@ class GenreServiceImplTest {
 
     @Test
     void findById_whenGenreFound_thenReturnGenre() {
-        when(repository.findById(id)).thenReturn(expected);
+        when(repository.findById(id, false)).thenReturn(expected);
 
         actual = service.findById(id);
 
@@ -44,7 +44,7 @@ class GenreServiceImplTest {
 
     @Test
     void findById_whenGenreNotFound_thenThrowNotFoundException() {
-        when(repository.findById(id)).thenReturn(new Genre());
+        when(repository.findById(id, false)).thenReturn(new Genre());
 
         assertThrows(NotFoundException.class,
                 () -> service.findById(id));

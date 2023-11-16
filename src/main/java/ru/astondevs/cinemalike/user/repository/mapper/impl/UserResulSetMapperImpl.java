@@ -1,6 +1,7 @@
 package ru.astondevs.cinemalike.user.repository.mapper.impl;
 
 import ru.astondevs.cinemalike.film.model.Film;
+import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.user.model.User;
 import ru.astondevs.cinemalike.user.repository.mapper.UserResultSetMapper;
 
@@ -21,7 +22,7 @@ public class UserResulSetMapperImpl implements UserResultSetMapper {
             Film film = new Film();
             film.setId(resultSet.getLong(6));
             film.setName(resultSet.getString(7));
-            film.setGenre(resultSet.getLong(8));
+            film.setGenre(new Genre(resultSet.getLong(8), null));
             if (film.getId() != 0) {
                 films.add(film);
             }

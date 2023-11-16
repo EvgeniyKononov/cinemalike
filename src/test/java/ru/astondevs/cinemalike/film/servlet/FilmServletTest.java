@@ -43,8 +43,8 @@ class FilmServletTest {
     @BeforeEach
     public void setUp() {
         writer = new StringWriter();
-        film = new Film("best film", 1L);
         genre = new Genre(1L, "action");
+        film = new Film("best film", genre);
         outFilmDtoJson = "{\"name\":\"best film\",\"genre\":\"action\",\"userLikes\":[]}";
         String inFilmDtoJson = "{\"name\":\"best film\",\"genreDto\":{\"name\":\"action\"}}";
         InputStream is = new ByteArrayInputStream(inFilmDtoJson.getBytes());
@@ -75,7 +75,6 @@ class FilmServletTest {
     void doGet_whenInvokeGet_thenReturnOutFilmDtoAsJson() throws IOException {
         when(request.getParameter("id")).thenReturn("1");
         when(filmService.findById(1L)).thenReturn(film);
-        when(genreService.findById(film.getGenre())).thenReturn(genre);
         when(response.getWriter()).thenReturn(new PrintWriter(writer));
 
         filmServlet.doGet(request, response);

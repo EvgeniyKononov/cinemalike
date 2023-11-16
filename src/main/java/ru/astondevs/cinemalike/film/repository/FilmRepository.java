@@ -9,9 +9,9 @@ public interface FilmRepository {
 
     Film findByName(String name);
 
-    Film save(Film film, Long genreId);
+    Film save(Film film);
 
-    Film update(Film film, Long genreId);
+    Film update(Film film);
 
     void delete(Long id);
 

@@ -10,6 +10,7 @@ import ru.astondevs.cinemalike.exception.DuplicateException;
 import ru.astondevs.cinemalike.exception.NotFoundException;
 import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.repository.FilmRepository;
+import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.user.model.User;
 
 import java.util.HashSet;
@@ -30,20 +31,18 @@ class FilmServiceImplTest {
     private Film actual;
     private Long filmId;
     private String filmName;
-    private Long userId;
     private Long genreId;
-    private Set<User> users;
     private Set<Film> films;
 
     @BeforeEach
     void setUp() {
         filmId = 1L;
-        userId = 2L;
         genreId = 3L;
         filmName = "Terminator";
-        users = new HashSet<>(List.of(new User("sherminator", "sherman")));
+        Genre genre = new Genre(genreId, "action");
+        Set<User> users = new HashSet<>(List.of(new User("sherminator", "sherman")));
         films = new HashSet<>();
-        expected = new Film(filmId, filmName, users, genreId);
+        expected = new Film(filmId, filmName, users, genre);
     }
 
     @Test
@@ -66,7 +65,7 @@ class FilmServiceImplTest {
     @Test
     void save_whenFilmSaved_thenReturnFilm() {
         when(repository.findByName(filmName)).thenReturn(new Film());
-        when(repository.save(expected, genreId)).thenReturn(expected);
+        when(repository.save(expected)).thenReturn(expected);
 
         actual = service.save(expected);
 
@@ -79,12 +78,12 @@ class FilmServiceImplTest {
 
         assertThrows(DuplicateException.class, () -> service.save(expected));
 
-        verify(repository, never()).save(any(), any());
+        verify(repository, never()).save(any());
     }
 
     @Test
     void update_whenFilmUpdated_thenReturnFilm() {
-        when(repository.update(expected, genreId)).thenReturn(expected);
+        when(repository.update(expected)).thenReturn(expected);
 
         actual = service.update(expected, expected);
 

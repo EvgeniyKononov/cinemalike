@@ -56,7 +56,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void delete(Long id) {
-        String query = "DELETE FROM users WHERE id = " + id;
+        String query = "DELETE FROM film_likes WHERE user_id = " + id;
+        connectionManager.executeQuery(query);
+        query = "DELETE FROM users WHERE id = " + id;
         connectionManager.executeQuery(query);
     }
 

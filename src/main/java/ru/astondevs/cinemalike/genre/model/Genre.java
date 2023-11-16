@@ -49,6 +49,15 @@ public class Genre {
     }
 
     @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", films=" + films +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -59,14 +68,5 @@ public class Genre {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, films);
-    }
-
-    @Override
-    public String toString() {
-        return "Genre{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", films=" + films +
-                '}';
     }
 }

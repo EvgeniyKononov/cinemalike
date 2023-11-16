@@ -5,8 +5,6 @@ import ru.astondevs.cinemalike.film.servlet.dto.InFilmDto;
 import ru.astondevs.cinemalike.film.servlet.dto.OutFilmDto;
 import ru.astondevs.cinemalike.film.servlet.mapper.FilmDtoMapper;
 import ru.astondevs.cinemalike.genre.model.Genre;
-import ru.astondevs.cinemalike.genre.service.GenreService;
-import ru.astondevs.cinemalike.genre.service.impl.GenreServiceImpl;
 import ru.astondevs.cinemalike.user.model.User;
 import ru.astondevs.cinemalike.user.servlet.dto.OutUserDto;
 import ru.astondevs.cinemalike.user.servlet.mapper.UserDtoMapper;
@@ -17,11 +15,9 @@ import java.util.Set;
 
 public class FilmDtoMapperImpl implements FilmDtoMapper {
     private final UserDtoMapper userDtoMapper;
-    private final GenreService genreService;
 
     public FilmDtoMapperImpl() {
         userDtoMapper = new UserDtoMapperImpl();
-        genreService = new GenreServiceImpl();
     }
 
     @Override
@@ -33,15 +29,22 @@ public class FilmDtoMapperImpl implements FilmDtoMapper {
     }
 
     @Override
+    public OutFilmDto map(Film film) {
+        Set<User> users = film.getUserLikes();
+        Set<OutUserDto> outUsersDto = userDtoMapper.map(users);
+        return new OutFilmDto(film.getName(), outUsersDto, film.getGenre().getName());
+    }
+
+    @Override
     public Film toNewEntity(InFilmDto inFilmDto, Genre genre) {
-        return new Film(inFilmDto.getName(), genre.getId());
+        return new Film(inFilmDto.getName(), genre);
     }
 
     @Override
     public Set<OutFilmDto> toOutDto(Set<Film> films) {
         Set<OutFilmDto> outFilmsDto = new HashSet<>();
         for (Film film : films) {
-            outFilmsDto.add(map(film, genreService.findById(film.getGenre())));
+            outFilmsDto.add(map(film));
         }
         return outFilmsDto;
     }

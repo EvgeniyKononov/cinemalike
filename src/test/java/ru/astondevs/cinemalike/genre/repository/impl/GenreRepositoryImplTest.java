@@ -34,6 +34,7 @@ class GenreRepositoryImplTest {
     private GenreRepository repository;
     private Genre expected;
     private Genre actual;
+    boolean lazy = false;
 
     @BeforeAll
     static void beforeAll() {
@@ -63,7 +64,7 @@ class GenreRepositoryImplTest {
         Genre genre = new Genre(expected.getName());
 
         repository.save(genre);
-        actual = repository.findById(1L);
+        actual = repository.findById(1L, lazy);
 
         assertEquals(expected, actual);
     }
@@ -72,15 +73,15 @@ class GenreRepositoryImplTest {
     void findById_whenGenreFoundAndConnectedWithFilm_thenReturnGenreWithFilms() {
         Genre genre = new Genre(expected.getName());
         actual = repository.save(genre);
-        Film film1 = new Film("Terminator", actual.getId());
-        Film film2 = new Film("Terminator 2", actual.getId());
+        Film film1 = new Film("Terminator", actual);
+        Film film2 = new Film("Terminator 2", actual);
         FilmRepository filmRepository = new FilmRepositoryImpl();
-        filmRepository.save(film1, actual.getId());
-        filmRepository.save(film2, actual.getId());
+        filmRepository.save(film1);
+        filmRepository.save(film2);
         Set<Film> films = Set.of(filmRepository.findByName(film1.getName()), filmRepository.findByName(film2.getName()));
         expected.setFilms(films);
 
-        actual = repository.findById(1L);
+        actual = repository.findById(1L, lazy);
 
         assertEquals(expected, actual);
     }
@@ -90,7 +91,7 @@ class GenreRepositoryImplTest {
         Genre genre = new Genre(expected.getName());
 
         repository.save(genre);
-        actual = repository.findById(2L);
+        actual = repository.findById(2L, lazy);
 
         assertNull(actual.getId());
         assertNull(actual.getName());
@@ -140,12 +141,18 @@ class GenreRepositoryImplTest {
     }
 
     @Test
-    void delete_whenDeleteGenre_thenItNotInDbAndReturnTrue() {
+    void delete_whenDeleteGenreConnectedWithFilms_thenItNotInDbAndReturnTrue() {
         Genre genre = new Genre(expected.getName());
-        repository.save(genre);
+        actual = repository.save(genre);
+
+        Film film1 = new Film("Terminator", actual);
+        Film film2 = new Film("Terminator 2", actual);
+        FilmRepository filmRepository = new FilmRepositoryImpl();
+        filmRepository.save(film1);
+        filmRepository.save(film2);
 
         boolean success = repository.delete(expected.getId());
-        actual = repository.findById(expected.getId());
+        actual = repository.findById(expected.getId(), lazy);
 
         assertNull(actual.getId());
         assertNull(actual.getName());

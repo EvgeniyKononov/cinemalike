@@ -18,7 +18,7 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     public Genre findById(Long id) {
-        Genre genre = genreRepository.findById(id);
+        Genre genre = genreRepository.findById(id, false);
         if (Objects.isNull(genre.getId())) {
             throw new NotFoundException("Genre with such id not found");
         }

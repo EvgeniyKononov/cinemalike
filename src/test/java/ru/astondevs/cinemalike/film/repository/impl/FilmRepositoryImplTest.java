@@ -65,7 +65,7 @@ class FilmRepositoryImplTest {
         genreInDb = genreRepository.save(new Genre("action"));
         user1InDb = userRepository.save(new User("sherminator", "sherman"));
         user2InDb = userRepository.save(new User("stifmaster", "stifler"));
-        filmInDb = filmRepository.save(new Film("Terminator", genreInDb.getId()), genreInDb.getId());
+        filmInDb = filmRepository.save(new Film("Terminator", genreInDb));
         likeRepository.setLike(user1InDb.getId(), filmInDb.getId());
         likeRepository.setLike(user2InDb.getId(), filmInDb.getId());
     }
@@ -81,7 +81,7 @@ class FilmRepositoryImplTest {
 
         assertEquals(filmInDb.getId(), actual.getId());
         assertEquals(filmInDb.getName(), actual.getName());
-        assertEquals(genreInDb.getId(), actual.getGenre());
+        assertEquals(genreInDb, actual.getGenre());
         assertTrue(actual.getUserLikes().contains(user1InDb));
         assertTrue(actual.getUserLikes().contains(user2InDb));
     }
@@ -91,17 +91,17 @@ class FilmRepositoryImplTest {
         Genre newGenreInDb = genreRepository.save(new Genre("Drama"));
         String newName = "Titanic";
 
-        actual = filmRepository.update(new Film(filmInDb.getId(), newName, newGenreInDb.getId()), newGenreInDb.getId());
+        actual = filmRepository.update(new Film(filmInDb.getId(), newName, newGenreInDb));
 
         assertEquals(filmInDb.getId(), actual.getId());
         assertEquals(newName, actual.getName());
-        assertEquals(newGenreInDb.getId(), actual.getGenre());
+        assertEquals(newGenreInDb, actual.getGenre());
         assertTrue(actual.getUserLikes().contains(user1InDb));
         assertTrue(actual.getUserLikes().contains(user2InDb));
     }
 
     @Test
-    void delete_whenDeleteGenre_thenItNotInDbAndReturn() {
+    void delete_whenDeleteFilm_thenItNotInDbAndReturn() {
         filmRepository.delete(filmInDb.getId());
 
         actual = filmRepository.findById(filmInDb.getId());
@@ -115,6 +115,7 @@ class FilmRepositoryImplTest {
         Set<Film> films = filmRepository.getLikedFilmsByUserId(user1InDb.getId());
 
         assertEquals(1, films.size());
-        assertTrue(films.contains(filmInDb));
+        Film film = (Film) films.toArray()[0];
+        assertEquals(filmInDb, film);
     }
 }

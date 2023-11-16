@@ -9,6 +9,7 @@ import java.util.Set;
 
 public interface FilmDtoMapper {
     OutFilmDto map(Film film, Genre genre);
+    OutFilmDto map(Film film);
 
     Film toNewEntity(InFilmDto inFilmDto, Genre genre);
 

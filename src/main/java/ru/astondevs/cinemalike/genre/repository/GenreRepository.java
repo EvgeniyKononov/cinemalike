@@ -3,7 +3,7 @@ package ru.astondevs.cinemalike.genre.repository;
 import ru.astondevs.cinemalike.genre.model.Genre;
 
 public interface GenreRepository {
-    Genre findById(Long id);
+    Genre findById(Long id, boolean lazy);
 
     Genre findByName(String name);
 

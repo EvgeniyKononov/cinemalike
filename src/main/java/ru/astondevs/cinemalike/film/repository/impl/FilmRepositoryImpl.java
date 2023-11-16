@@ -6,12 +6,16 @@ import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.repository.FilmRepository;
 import ru.astondevs.cinemalike.film.repository.mapper.FilmResultSetMapper;
 import ru.astondevs.cinemalike.film.repository.mapper.impl.FilmResultSetMapperImpl;
+import ru.astondevs.cinemalike.genre.model.Genre;
+import ru.astondevs.cinemalike.genre.repository.GenreRepository;
+import ru.astondevs.cinemalike.genre.repository.impl.GenreRepositoryImpl;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -44,16 +48,16 @@ public class FilmRepositoryImpl implements FilmRepository {
     }
 
     @Override
-    public Film save(Film film, Long genreId) {
+    public Film save(Film film) {
         String query = "INSERT INTO films (name, genre) " +
-                "VALUES ('" + film.getName() + "', '" + genreId + "')";
+                "VALUES ('" + film.getName() + "', '" + film.getGenre().getId() + "')";
         connectionManager.executeQuery(query);
         return findByName(film.getName());
     }
 
     @Override
-    public Film update(Film film, Long genreId) {
-        String query = "UPDATE films SET name = '" + film.getName() + "', genre = '" + genreId
+    public Film update(Film film) {
+        String query = "UPDATE films SET name = '" + film.getName() + "', genre = '" + film.getGenre().getId()
                 + "' WHERE id = " + film.getId();
         connectionManager.executeQuery(query);
         return findById(film.getId());
@@ -88,7 +92,7 @@ public class FilmRepositoryImpl implements FilmRepository {
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
         }
-
+        film.setGenre(getGenre(film.getGenre()));
         return film;
     }
 
@@ -101,7 +105,19 @@ public class FilmRepositoryImpl implements FilmRepository {
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
         }
+        for (Film film : films){
+            film.setGenre(getGenre(film.getGenre()));
+        }
         return films;
     }
 
+    private Genre getGenre(Genre genre) {
+        Genre genreInDb = new Genre();
+        if (Objects.nonNull(genre)) {
+            GenreRepository genreRepository = new GenreRepositoryImpl();
+            boolean lazy = true;
+            genreInDb = genreRepository.findById(genre.getId(), lazy);
+        }
+        return genreInDb;
+    }
 }

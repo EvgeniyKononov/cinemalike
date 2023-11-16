@@ -35,8 +35,7 @@ public class FilmServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long id = Long.valueOf(req.getParameter("id"));
         Film film = filmService.findById(id);
-        Genre genre = genreService.findById(film.getGenre());
-        OutFilmDto outFilmDto = dtoMapper.map(film, genre);
+        OutFilmDto outFilmDto = dtoMapper.map(film);
         String json = objectMapper.writeValueAsString(outFilmDto);
         resp.getWriter().write(json);
     }

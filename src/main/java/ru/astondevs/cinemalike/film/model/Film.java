@@ -1,5 +1,6 @@
 package ru.astondevs.cinemalike.film.model;
 
+import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.user.model.User;
 
 import java.util.HashSet;
@@ -9,30 +10,30 @@ import java.util.Set;
 public class Film {
     private Long id;
     private String name;
-    private Long genreId;
+    private Genre genre;
     private Set<User> userLikes;
 
     public Film() {
         userLikes = new HashSet<>();
     }
 
-    public Film(Long id, String name, Set<User> userLikes, Long genreId) {
+    public Film(Long id, String name, Set<User> userLikes, Genre genre) {
         this.id = id;
         this.name = name;
         this.userLikes = userLikes;
-        this.genreId = genreId;
+        this.genre = genre;
     }
 
-    public Film(String name, Long genreId) {
+    public Film(String name, Genre genre) {
         this.name = name;
-        this.genreId = genreId;
+        this.genre = genre;
         userLikes = new HashSet<>();
     }
 
-    public Film(Long id, String name, Long genreId) {
+    public Film(Long id, String name, Genre genre) {
         this.id = id;
         this.name = name;
-        this.genreId = genreId;
+        this.genre = genre;
         userLikes = new HashSet<>();
     }
 
@@ -60,12 +61,22 @@ public class Film {
         this.userLikes = userLikes;
     }
 
-    public Long getGenre() {
-        return genreId;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setGenre(Long genreId) {
-        this.genreId = genreId;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", genre=" + genre +
+                ", userLikes=" + userLikes +
+                '}';
     }
 
     @Override
@@ -74,21 +85,11 @@ public class Film {
         if (o == null || getClass() != o.getClass()) return false;
         Film film = (Film) o;
         return Objects.equals(id, film.id) && Objects.equals(name, film.name)
-                && Objects.equals(userLikes, film.userLikes) && Objects.equals(genreId, film.genreId);
+                && Objects.equals(genre, film.genre) && Objects.equals(userLikes, film.userLikes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, userLikes, genreId);
-    }
-
-    @Override
-    public String toString() {
-        return "Film{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", genreId=" + genreId +
-                ", userLikes=" + userLikes +
-                '}';
+        return Objects.hash(id, name, genre, userLikes);
     }
 }

@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.astondevs.cinemalike.exception.NotFoundException;
 import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.repository.FilmRepository;
+import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.like.repository.LikeRepository;
 import ru.astondevs.cinemalike.user.model.User;
 import ru.astondevs.cinemalike.user.repository.UserRepository;
@@ -37,8 +37,9 @@ class LikeServiceImplTest {
     void setUp() {
         userId = 1L;
         filmId = 2L;
+        Genre genre = new Genre(3L, "action");
         user = new User(userId, "login", "name");
-        film = new Film(filmId, "Terminator", 3L);
+        film = new Film(filmId, "Terminator", genre);
     }
 
     @Test

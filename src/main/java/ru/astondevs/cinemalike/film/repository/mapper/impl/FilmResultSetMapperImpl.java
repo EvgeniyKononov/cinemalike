@@ -2,6 +2,7 @@ package ru.astondevs.cinemalike.film.repository.mapper.impl;
 
 import ru.astondevs.cinemalike.film.model.Film;
 import ru.astondevs.cinemalike.film.repository.mapper.FilmResultSetMapper;
+import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.user.model.User;
 
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class FilmResultSetMapperImpl implements FilmResultSetMapper {
         while (resultSet.next()) {
             film.setId(resultSet.getLong(1));
             film.setName(resultSet.getString(2));
-            film.setGenre(resultSet.getLong(3));
+            film.setGenre(getGenreEntityWithId(resultSet.getLong(3)));
             User user = new User();
             user.setId(resultSet.getLong(6));
             user.setLogin(resultSet.getString(7));
@@ -38,9 +39,17 @@ public class FilmResultSetMapperImpl implements FilmResultSetMapper {
             Film film = new Film();
             film.setId(resultSet.getLong(1));
             film.setName(resultSet.getString(2));
-            film.setGenre(resultSet.getLong(3));
+            film.setGenre(getGenreEntityWithId(resultSet.getLong(3)));
             films.add(film);
         }
         return films;
+    }
+
+    private Genre getGenreEntityWithId(long id) {
+        Genre genre = new Genre();
+        if (id != 0) {
+            genre = new Genre(id, null);
+        }
+        return genre;
     }
 }
