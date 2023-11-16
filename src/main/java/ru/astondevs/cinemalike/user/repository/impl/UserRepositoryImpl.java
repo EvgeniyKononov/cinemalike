@@ -26,51 +26,85 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findById(Long id) {
         String query = "SELECT * FROM users AS u LEFT JOIN film_likes AS fl ON u.id = fl.user_id " +
-                "LEFT JOIN films AS f ON fl.film_id = f.id WHERE u.id = " + id;
-        return getUser(query);
-    }
-
-    @Override
-    public User findByLogin(String login) {
-        String query = "SELECT * FROM users AS u LEFT JOIN film_likes AS fl ON u.id = fl.user_id " +
-                "LEFT JOIN films AS f ON fl.film_id = f.id WHERE u.login = '" + login + "'";
-        return getUser(query);
-    }
-
-    @Override
-    public User save(User user) {
-        String query = "INSERT INTO users (login, name) " +
-                "VALUES ('" + user.getLogin() + "', '" + user.getName() + "')";
-
-        connectionManager.executeQuery(query);
-        return findByLogin(user.getLogin());
-    }
-
-    @Override
-    public User update(User user) {
-        String query = "UPDATE users SET login = '" + user.getLogin() + "', name = '" + user.getName()
-                + "' WHERE id = " + user.getId();
-        connectionManager.executeQuery(query);
-        return findById(user.getId());
-    }
-
-    @Override
-    public void delete(Long id) {
-        String query = "DELETE FROM film_likes WHERE user_id = " + id;
-        connectionManager.executeQuery(query);
-        query = "DELETE FROM users WHERE id = " + id;
-        connectionManager.executeQuery(query);
-    }
-
-    private User getUser(String query) {
+                "LEFT JOIN films AS f ON fl.film_id = f.id WHERE u.id = ?";
         User user = new User();
         try (Connection connection = connectionManager.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
             user = resultSetMapper.map(resultSet);
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
         }
         return user;
+    }
+
+    @Override
+    public User findByLogin(String login) {
+        String query = "SELECT * FROM users AS u LEFT JOIN film_likes AS fl ON u.id = fl.user_id " +
+                "LEFT JOIN films AS f ON fl.film_id = f.id WHERE u.login = ?";
+        User user = new User();
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, login);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            user = resultSetMapper.map(resultSet);
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        return user;
+    }
+
+    @Override
+    public User save(User user) {
+        String query = "INSERT INTO users (login, name) VALUES (?, ?)";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        return findByLogin(user.getLogin());
+    }
+
+    @Override
+    public User update(User user) {
+        String query = "UPDATE users SET login = ?, name = ? WHERE id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.setLong(3, user.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        return findById(user.getId());
+    }
+
+    @Override
+    public void delete(Long id) {
+        deleteUserFilmLink(id);
+        String query = "DELETE FROM users WHERE id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+    }
+
+    private void deleteUserFilmLink(Long id) {
+        String query = "DELETE FROM film_likes WHERE user_id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
     }
 }

@@ -10,11 +10,9 @@ import ru.astondevs.cinemalike.genre.repository.GenreRepository;
 import ru.astondevs.cinemalike.genre.repository.mapper.GenreResultSetMapper;
 import ru.astondevs.cinemalike.genre.repository.mapper.impl.GenreResultSetMapperImpl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -34,55 +32,95 @@ public class GenreRepositoryImpl implements GenreRepository {
 
     @Override
     public Genre findById(Long id, boolean lazy) {
-        String query = "SELECT * FROM genres WHERE id = " + id;
-        return getGenre(query, lazy);
+        String query = "SELECT * FROM genres WHERE id = ?";
+        Genre genre = new Genre();
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            genre = resultSetMapper.map(resultSet);
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        genre.setFilms(getFilms(genre.getId(), lazy));
+        return genre;
     }
 
     @Override
     public Genre findByName(String name) {
-        String query = "SELECT * FROM genres WHERE name = '" + name + "'";
-        return getGenre(query, false);
+        String query = "SELECT * FROM genres WHERE name = ?";
+        Genre genre = new Genre();
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            genre = resultSetMapper.map(resultSet);
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        genre.setFilms(getFilms(genre.getId(), false));
+        return genre;
     }
 
     @Override
     public Genre save(Genre genre) {
-        String query = "INSERT INTO genres (name) " +
-                "VALUES ('" + genre.getName() + "')";
-
-        connectionManager.executeQuery(query);
+        String query = "INSERT INTO genres (name) VALUES (?)";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, genre.getName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
         return findByName(genre.getName());
     }
 
     @Override
     public Genre update(Genre genre) {
-        String query = "UPDATE genres SET name = '" + genre.getName() + "' WHERE id = " + genre.getId();
-        connectionManager.executeQuery(query);
+        String query = "UPDATE genres SET name = ? WHERE id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, genre.getName());
+            preparedStatement.setLong(2, genre.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
         return findById(genre.getId(), false);
     }
 
     @Override
     public boolean delete(Long id) {
-        String query = "UPDATE films SET genre = null WHERE genre = " + id;
-        connectionManager.executeQuery(query);
-        query = "DELETE FROM genres WHERE id = " + id;
-        return connectionManager.executeQuery(query);
-    }
-
-    private Genre getGenre(String query, boolean lazy) {
-        Genre genre = new Genre();
+        deleteGenreFilmLink(id);
+        String query = "DELETE FROM genres WHERE id = ?";
+        boolean success = false;
         try (Connection connection = connectionManager.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
-            genre = resultSetMapper.map(resultSet);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            success = true;
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
         }
-        if (!lazy) {
-            Set<Film> films = filmRepository.getFilmsByGenreId(genre.getId());
-            genre.setFilms(films);
-        } else {
-            genre.setFilms(new HashSet<>());
+        return success;
+    }
+
+    private Set<Film> getFilms(Long genreId, boolean lazy) {
+        Set<Film> films = new HashSet<>();
+        if (Objects.nonNull(genreId) && (!lazy)) {
+                films = filmRepository.getFilmsByGenreId(genreId);
+
         }
-        return genre;
+        return films;
+    }
+    private void deleteGenreFilmLink(Long id) {
+        String query = "UPDATE films SET genre = null WHERE genre = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
     }
 }

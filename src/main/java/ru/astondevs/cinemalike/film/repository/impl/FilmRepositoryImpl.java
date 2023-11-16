@@ -10,10 +10,7 @@ import ru.astondevs.cinemalike.genre.model.Genre;
 import ru.astondevs.cinemalike.genre.repository.GenreRepository;
 import ru.astondevs.cinemalike.genre.repository.impl.GenreRepositoryImpl;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -36,58 +33,12 @@ public class FilmRepositoryImpl implements FilmRepository {
 
     @Override
     public Film findById(Long id) {
-        String query = SELECT_ALL_FILMS_JOINED_LIKES + "LEFT JOIN users AS u ON fl.user_id = u.id WHERE f.id = " + id;
-        return getFilm(query);
-    }
-
-    @Override
-    public Film findByName(String name) {
-        String query = SELECT_ALL_FILMS_JOINED_LIKES + "LEFT JOIN users AS u ON fl.user_id = u.id " +
-                "WHERE f.name = '" + name + "'";
-        return getFilm(query);
-    }
-
-    @Override
-    public Film save(Film film) {
-        String query = "INSERT INTO films (name, genre) " +
-                "VALUES ('" + film.getName() + "', '" + film.getGenre().getId() + "')";
-        connectionManager.executeQuery(query);
-        return findByName(film.getName());
-    }
-
-    @Override
-    public Film update(Film film) {
-        String query = "UPDATE films SET name = '" + film.getName() + "', genre = '" + film.getGenre().getId()
-                + "' WHERE id = " + film.getId();
-        connectionManager.executeQuery(query);
-        return findById(film.getId());
-    }
-
-    @Override
-    public void delete(Long id) {
-        String query = "DELETE FROM film_likes WHERE film_id = " + id;
-        connectionManager.executeQuery(query);
-        query = "DELETE FROM films WHERE id = " + id;
-        connectionManager.executeQuery(query);
-    }
-
-    @Override
-    public Set<Film> getFilmsByGenreId(Long id) {
-        String query = "SELECT * FROM films WHERE genre = " + id;
-        return getFilms(query);
-    }
-
-    @Override
-    public Set<Film> getLikedFilmsByUserId(Long id) {
-        String query = SELECT_ALL_FILMS_JOINED_LIKES + "WHERE fl.user_id = " + id;
-        return getFilms(query);
-    }
-
-    private Film getFilm(String query) {
+        String query = SELECT_ALL_FILMS_JOINED_LIKES + "LEFT JOIN users AS u ON fl.user_id = u.id WHERE f.id = ?";
         Film film = new Film();
         try (Connection connection = connectionManager.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
             film = resultSetMapper.map(resultSet);
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
@@ -96,16 +47,87 @@ public class FilmRepositoryImpl implements FilmRepository {
         return film;
     }
 
-    private Set<Film> getFilms(String query) {
+    @Override
+    public Film findByName(String name) {
+        String query = SELECT_ALL_FILMS_JOINED_LIKES + "LEFT JOIN users AS u ON fl.user_id = u.id WHERE f.name = ?";
+        Film film = new Film();
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            film = resultSetMapper.map(resultSet);
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        film.setGenre(getGenre(film.getGenre()));
+        return film;
+    }
+
+    @Override
+    public Film save(Film film) {
+        String query = "INSERT INTO films (name, genre) VALUES (?, ?)";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, film.getName());
+            preparedStatement.setLong(2, film.getGenre().getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        return findByName(film.getName());
+    }
+
+    @Override
+    public Film update(Film film) {
+        String query = "UPDATE films SET name = ?, genre = ? WHERE id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, film.getName());
+            preparedStatement.setLong(2, film.getGenre().getId());
+            preparedStatement.setLong(3, film.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+        return findById(film.getId());
+    }
+
+    @Override
+    public void delete(Long id) {
+        deleteUserFilmLink(id);
+        String query = "DELETE FROM films WHERE id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
+    }
+
+    @Override
+    public Set<Film> getFilmsByGenreId(Long id) {
+        String query = "SELECT * FROM films WHERE genre = ?";
+        return getFilms(query, id);
+    }
+
+    @Override
+    public Set<Film> getLikedFilmsByUserId(Long id) {
+        String query = SELECT_ALL_FILMS_JOINED_LIKES + "WHERE fl.user_id = ?";
+        return getFilms(query, id);
+    }
+
+    private Set<Film> getFilms(String query, Long id) {
         Set<Film> films = new HashSet<>();
         try (Connection connection = connectionManager.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
             films = resultSetMapper.toEntity(resultSet);
         } catch (SQLException exception) {
             log.severe(SQL_EXCEPTION + exception.getMessage());
         }
-        for (Film film : films){
+        for (Film film : films) {
             film.setGenre(getGenre(film.getGenre()));
         }
         return films;
@@ -119,5 +141,16 @@ public class FilmRepositoryImpl implements FilmRepository {
             genreInDb = genreRepository.findById(genre.getId(), lazy);
         }
         return genreInDb;
+    }
+
+    private void deleteUserFilmLink(Long id) {
+        String query = "DELETE FROM film_likes WHERE film_id = ?";
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+            log.severe(SQL_EXCEPTION + exception.getMessage());
+        }
     }
 }
