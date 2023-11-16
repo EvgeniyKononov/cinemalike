@@ -9,30 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0202857d-a007-4afa-9bd0-64af6fc4ccc1" name="Changes" comment="added README.md">
+    <list default="true" id="0202857d-a007-4afa-9bd0-64af6fc4ccc1" name="Changes" comment="Made refactor Film entity. Fixed several bugs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/model/Film.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/FilmRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/FilmRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/repository/mapper/impl/FilmResultSetMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/FilmServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/FilmDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/FilmDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/film/servlet/mapper/impl/FilmDtoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/model/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/GenreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/mapper/impl/UserResulSetMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/astondevs/cinemalike/user/repository/mapper/impl/UserResulSetMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/repository/impl/FilmRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/service/impl/FilmServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/servlet/FilmServletTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/film/servlet/FilmServletTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/genre/repository/impl/GenreRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/genre/service/impl/GenreServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/astondevs/cinemalike/like/service/impl/LikeServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,7 +298,7 @@
       <workItem from="1699688881750" duration="39009000" />
       <workItem from="1699946206587" duration="30960000" />
       <workItem from="1700029808049" duration="28123000" />
-      <workItem from="1700120357960" duration="7398000" />
+      <workItem from="1700120357960" duration="8932000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1699201051008</created>
@@ -357,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700057169231</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Made refactor Film entity. Fixed several bugs.">
+      <created>1700128030419</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700128030419</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,7 +378,9 @@
     <MESSAGE value="realized setting and deleting likes" />
     <MESSAGE value="added tests for servlets and services" />
     <MESSAGE value="added tests for repositories via testcontainers" />
-    <option name="LAST_COMMIT_MESSAGE" value="added tests for repositories via testcontainers" />
+    <MESSAGE value="made refactor Film entity. Fixed several bugs." />
+    <MESSAGE value="Made refactor Film entity. Fixed several bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made refactor Film entity. Fixed several bugs." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
